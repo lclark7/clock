@@ -1,0 +1,49 @@
+// Defined Variables
+var backgd;
+var hourLine;
+var minuteLine;
+var secondLine;
+var begin;
+var end;
+
+// Canvas Setup
+function setup() {
+	createCanvas(windowWidth, windowHeight);
+	background(100);
+	
+	
+	// Setup for Time Line Colors
+	hourLine = color('hsl(270, 65%, 40%, 0.5)');
+	minuteLine = color('hsl(270, 65%, 40%, 0.5)');
+	secondLine = color('hsl(270, 65%, 40%, 0.5)');
+	
+	
+	//Line Width
+	begin = width/20;
+	end = (width/20)*19;
+}
+
+function draw() {
+	//Background
+	backgd = color('hsba(270, 65%, 40%, 0.5)')
+	background(backgd)
+	strokeWeight(20)
+	
+	// Hour Line
+	stroke(hourLine);
+	line(end,height/4,begin,height/4);
+	fill('hsba(270, 65%, 40%, 0.5)')
+	ellipse(begin + (hour()/23 * (end - begin)), height/4, 30, 30);
+	
+	// Minute Line
+	stroke(minuteLine);
+	line(end,(height/4) * 2,begin,(height/4) * 2);
+	fill('hsba(270, 65%, 40%, 0.5)');
+	ellipse(begin + (minute()/59 * (end - begin)), (height/4) * 2, 30, 30);
+	
+	// Second Line
+	stroke(secondLine);
+	line(end,(height/4) * 3,begin,(height/4) * 3);
+	fill('hsba(270, 65%, 40%, 0.5)');
+	ellipse(begin + (second()/59 * (end - begin)), (height/4) * 3, 30, 30);
+}
